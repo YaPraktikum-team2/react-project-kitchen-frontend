@@ -108,7 +108,7 @@ class Editor extends React.Component {
                       className="form-control form-control-lg"
                       type="text"
                       placeholder="Article Title"
-                      value={this.props.title}
+                      value={this.props.title || ''}
                       onChange={this.changeTitle} />
                   </fieldset>
 
@@ -117,7 +117,7 @@ class Editor extends React.Component {
                       className="form-control"
                       type="text"
                       placeholder="What's this article about?"
-                      value={this.props.description}
+                      value={this.props.description || ''}
                       onChange={this.changeDescription} />
                   </fieldset>
 
@@ -126,7 +126,7 @@ class Editor extends React.Component {
                       className="form-control"
                       rows="8"
                       placeholder="Write your article (in markdown)"
-                      value={this.props.body}
+                      value={this.props.body || ''}
                       onChange={this.changeBody}>
                     </textarea>
                   </fieldset>
@@ -136,7 +136,7 @@ class Editor extends React.Component {
                       className="form-control"
                       type="text"
                       placeholder="Enter tags"
-                      value={this.props.tagInput}
+                      value={this.props.tagInput || ''}
                       onChange={this.changeTagInput}
                       onKeyUp={this.watchForEnter} />
 
