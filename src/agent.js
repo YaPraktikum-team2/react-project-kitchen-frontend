@@ -53,7 +53,7 @@ const Articles = {
   del: slug =>
     requests.del(`/articles/${slug}`),
   favorite: slug =>
-    requests.post(`/articles/${slug}/favorite`),
+    requests.post(`/articles/:${slug}/favorite`),
   favoritedBy: (author, page) =>
     requests.get(`/articles?favorited=${encode(author)}&${limit(5, page)}`),
   feed: () =>
