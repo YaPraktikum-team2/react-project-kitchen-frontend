@@ -86,7 +86,7 @@ const MainView = props => {
 
       <ArticleList
         pager={props.pager}
-        articles={[...props.articles, ...fakeData.articles]}
+        articles={Array.from(props.articles || []).concat(fakeData.articles)}
         loading={props.loading}
         articlesCount={props.articlesCount}
         currentPage={props.currentPage} />
