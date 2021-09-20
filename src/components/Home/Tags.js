@@ -1,36 +1,42 @@
 import React from 'react';
-import agent from '../../agent';
+import { v4 as uuidv4 } from 'uuid';
 
-const Tags = props => {
-  const tags = props.tags;
-  if (tags) {
-    return (
-      <div className="tag-list">
-        {
+import agent from '../../agent';
+import styles from './Tags.module.css';
+
+const Tags = ({ tags, onClickTag, tagChecked }) => {
+  return(
+    <div className={styles.sidebar}>
+      <h3 className={styles.title}>Популярные теги</h3>
+      <ul className={`${styles.list}`}>
+        {(tags && tags.length) ? (
           tags.map(tag => {
             const handleClick = ev => {
               ev.preventDefault();
-              props.onClickTag(tag, page => agent.Articles.byTag(tag, page), agent.Articles.byTag(tag));
+              onClickTag(tag, page => agent.Articles.byTag(tag, page), agent.Articles.byTag(tag));
             };
-
+            const customID = uuidv4();
             return (
-              <a
-                href=""
-                className="tag-default tag-pill"
-                key={tag}
-                onClick={handleClick}>
-                {tag}
-              </a>
+              <li
+                key={customID}
+                className={tagChecked !== tag ? `${styles.item}` : `${styles.item} ${styles.item_active}`}
+                data-content={tag}
+              >
+                <a
+                  href="#"
+                  className={styles.item_content}
+                  onClick={handleClick}>
+                  {tag}
+                </a>
+              </li>
             );
           })
-        }
-      </div>
-    );
-  } else {
-    return (
-      <div>Loading Tags...</div>
-    );
-  }
+        ) : (
+          <div>Теги загружаются...</div>
+        )}
+      </ul>
+    </div>
+  )
 };
 
 export default Tags;

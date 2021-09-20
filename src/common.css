@@ -3,6 +3,8 @@
     src: url('./fonts/ttwpgott.ttf') format('truetype');
 }
 
+@import './theme.css';
+
 .text {
     font-family: 'Truetypewriter PolyglOTT';
     font-style: normal;

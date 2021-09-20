@@ -15,7 +15,8 @@ const Promise = global.Promise;
 const mapStateToProps = state => ({
   ...state.home,
   appName: state.common.appName,
-  token: state.common.token
+  token: state.common.token,
+  tagChecked: state.articleList.tag
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -52,15 +53,11 @@ class Home extends React.Component {
             <MainView />
 
             <div className="col-md-3">
-              <div className="sidebar">
-
-                <p>Popular Tags</p>
-
-                <Tags
-                  tags={this.props.tags}
-                  onClickTag={this.props.onClickTag} />
-
-              </div>
+              <Tags
+                tags={this.props.tags}
+                onClickTag={this.props.onClickTag}
+                tagChecked={this.props.tagChecked}
+              />
             </div>
           </div>
         </div>
